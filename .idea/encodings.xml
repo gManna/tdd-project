@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/.editorconfig" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/.eslintignore" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/configs/defaults.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/configs/gulp-tasks/JavascriptTranspile.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/configs/gulp-tasks/JsDevelopment.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/configs/gulp-tasks/JsLiveDevelopment.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/configs/gulp-tasks/Mocha.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/gulpfile.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/nodemon.json" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/Sum/Sum.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/Sum/Sum.spec.js" charset="UTF-8" />
+  </component>
+</project>
