@@ -13,9 +13,6 @@ function MochaTask(gulp, configs, APP_DIR) {
         reporter: 'nyan',
         ui: 'tdd'
       }))
-      .once('error', () => {
-        process.exit(1);
-      })
     ;
   }
 }
