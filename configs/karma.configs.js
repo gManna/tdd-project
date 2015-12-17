@@ -13,7 +13,7 @@ module.exports = function(config) {
     port: 9876,
     autoWatch: true,
     singleRun: false,
-    browsers: ['PhantomJS']
+    browsers: ['Chrome' /*, 'PhantomJS' */]
   };
 
   data.concurrency = Infinity;
@@ -21,7 +21,7 @@ module.exports = function(config) {
   data.plugins = [
     'karma-jasmine',
     'karma-chrome-launcher',
-    'karma-phantomjs-launcher',
+//    'karma-phantomjs-launcher',
     'karma-babel-preprocessor'
   ];
 
