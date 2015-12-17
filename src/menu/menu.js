@@ -24,6 +24,10 @@ class Menu {
     return this.menu.children();
   }
 
+  get length() {
+    return this.items.length;
+  }
+
   open() {
     this.isOpened = true;
 
@@ -47,7 +51,6 @@ class Menu {
   }
 
   onItemClick(event) {
-    console.log(event.type, event.target);
 
     return this;
   }

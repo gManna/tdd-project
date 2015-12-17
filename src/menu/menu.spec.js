@@ -68,6 +68,7 @@ describe("menuRendering", () => {
     headerMenu = new Menu();
     container = $('<nav />').appendTo($('body'));
     headerMenu.render(container);
+
     done();
   });
 
@@ -80,19 +81,29 @@ describe("menuRendering", () => {
   });
 
   it("should add items based on data", () => {
+    let itemsLen = headerMenu.length;
+
     menuData.forEach((item, index) => {
       headerMenu.addItem(item);
+      expect(headerMenu.length).toEqual(itemsLen + 1);
     });
+
+    expect(headerMenu.length).toEqual(menuData.length);
   });
 
   it("items should handle click", () => {
+    spyOn(headerMenu, "onItemClick").and.callThrough();
+
     menuData.forEach((item, index) => {
       headerMenu.addItem(item);
     });
 
+
     let item = headerMenu.items.get(0);
 
-    $(item).click()
+    $(item).click();
+
+    expect(headerMenu.onItemClick).toHaveBeenCalled();
   });
 
 });
