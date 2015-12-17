@@ -13,24 +13,26 @@ module.exports = function(config) {
     port: 9876,
     autoWatch: true,
     singleRun: false,
-    browsers: ['Chrome' /*, 'PhantomJS' */]
+    browsers: ['Chrome', 'PhantomJS']
   };
 
   data.concurrency = Infinity;
 
   data.plugins = [
-    'karma-jasmine',
-    'karma-chrome-launcher',
-//    'karma-phantomjs-launcher',
-    'karma-babel-preprocessor'
+//    'karma-chrome-launcher',
+    'karma-phantomjs-launcher',
+    'karma-babel-preprocessor',
+    'karma-jasmine'
   ];
 
   data.files = [
+    "node_modules/jquery/dist/jquery.js",
     "src/**/*.js"
   ];
 
   data.preprocessors = {
-    "src/**/*.js": ['babel']
+    "src/**/*.spec.js": ['babel'],
+    "src/**/!(*.spec).js": ['babel', 'coverage']
   };
 
   data.babelPreprocessor = {
@@ -44,6 +46,24 @@ module.exports = function(config) {
     sourceFileName: function (file) {
       return file.originalPath;
     }
+  };
+
+  data.coverageReporter = {
+    instrumenters: {isparta: require('isparta')},
+
+    instrumenter: {
+      'src/*.js': 'isparta'
+    },
+
+    reporters: [
+      {
+        type: 'text-summary',
+      },
+      {
+        type: 'html',
+        dir: 'coverage/'
+      }
+    ]
   };
 
   return config.set(data);
