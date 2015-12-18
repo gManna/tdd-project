@@ -4,7 +4,8 @@
   "description": "Code with unit tests, linters, coverage, ecc.",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/.bin/karma start ./configs/karma.configs.js"
+    "test": "./node_modules/.bin/karma start ./configs/karma.configs.js",
+    "dev": "./node_modules/.bin/karma start ./configs/karma.configs.js testDrivenDevelopment"
   },
   "repository": {
     "type": "git",

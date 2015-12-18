@@ -3,6 +3,20 @@
 var _ = require('lodash');
 var path = require('path');
 
+const PORT = 9876;
+const AUTO_WATCH = (function(cliOptions) {
+  var res;
+
+  try {
+    res = (cliOptions.indexOf('testDrivenDevelopment') > -1)
+  } catch(e) {
+    res = false;
+  }
+
+  (res && console.log('STARTING TEST DRIVEN DEVELOPMENT', '\n', 'SERVER LISTENING AT', '\n', `localhost:${PORT}`, '\n'));
+  return res;
+})(process.argv);
+
 module.exports = function(config) {
 
   var data = {
@@ -10,9 +24,9 @@ module.exports = function(config) {
     colors: true,
     frameworks: ['jasmine'],
     logLevel: config.LOG_INFO,
-    port: 9876,
-    autoWatch: true,
-    singleRun: false,
+    port: PORT,
+    autoWatch: AUTO_WATCH,
+    singleRun: !AUTO_WATCH,
     browsers: ['Chrome', 'PhantomJS']
   };
 
@@ -49,7 +63,9 @@ module.exports = function(config) {
   };
 
   data.coverageReporter = {
-    instrumenters: {isparta: require('isparta')},
+    instrumenters: {
+      isparta: require('isparta')
+    },
 
     instrumenter: {
       'src/*.js': 'isparta'
@@ -57,13 +73,20 @@ module.exports = function(config) {
 
     reporters: [
       {
-        type: 'text-summary',
+        type: 'text-summary'
       },
       {
         type: 'html',
         dir: 'coverage/'
       }
-    ]
+    ],
+    instrumenterOptions: {
+      isparta: {
+        babel : {
+          presets: 'es2015'
+        }
+      }
+    }
   };
 
   return config.set(data);
