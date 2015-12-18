@@ -80,5 +80,3 @@ class Menu {
       });
   }
 }
-
-Function.prototype.bind = 2;

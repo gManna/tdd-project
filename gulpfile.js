@@ -13,10 +13,7 @@ let
 
 gulp.task('javascript', taskFile('JavascriptTranspile'));
 
-gulp.task('tests', taskFile('Mocha.js'));
 
 gulp.task('watch', () => {
   gulp.watch(configs.srcGlob, ['javascript']);
-
-  gulp.watch(configs.testsGlob, ['tests']);
 });
