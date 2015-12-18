@@ -4,6 +4,9 @@ var _ = require('lodash');
 var path = require('path');
 
 const PORT = 9876;
+const SOURCES_ALL = "src/**/*.js";
+const SOURCES = "src/**/!(*.spec).js";
+const SOURCE_SPECS = "src/**/*.spec.js";
 const AUTO_WATCH = (function(cliOptions) {
   var res;
 
@@ -22,20 +25,23 @@ module.exports = function(config) {
   var data = {
     basePath: '..',
     colors: true,
-    frameworks: ['jasmine'],
+
     logLevel: config.LOG_INFO,
     port: PORT,
     autoWatch: AUTO_WATCH,
     singleRun: !AUTO_WATCH,
+
+    frameworks: ['jasmine'],
     browsers: ['Chrome', 'PhantomJS']
   };
 
   data.concurrency = Infinity;
 
   data.plugins = [
-//    'karma-chrome-launcher',
+    'karma-chrome-launcher',
     'karma-phantomjs-launcher',
     'karma-babel-preprocessor',
+    'karma-coverage',
     'karma-jasmine'
   ];
 
@@ -45,8 +51,8 @@ module.exports = function(config) {
   ];
 
   data.preprocessors = {
-    "src/**/*.spec.js": ['babel'],
-    "src/**/!(*.spec).js": ['babel', 'coverage']
+    [SOURCE_SPECS]: ['babel'],
+    [SOURCES]: ['babel', 'coverage']
   };
 
   data.babelPreprocessor = {
@@ -62,13 +68,14 @@ module.exports = function(config) {
     }
   };
 
+  data.reporters = ['dots', 'coverage'];
   data.coverageReporter = {
     instrumenters: {
       isparta: require('isparta')
     },
 
     instrumenter: {
-      'src/*.js': 'isparta'
+      [SOURCES_ALL]: 'isparta'
     },
 
     reporters: [
@@ -77,7 +84,7 @@ module.exports = function(config) {
       },
       {
         type: 'html',
-        dir: 'coverage/'
+        dir: 'dist/reports/coverage/'
       }
     ],
     instrumenterOptions: {

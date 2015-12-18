@@ -1,13 +1,19 @@
 describe("create Menu", () => {
 
-  it("var headerMenu should be undefined", () => {
+  it("should be defined in the 'windows' scope", () => {
+    expect(window.Menu).toBeDefined();
     expect(Menu).toBeDefined();
   });
 
-  it("create a menu instance and assign it to var headerMenu", () => {
+  it("should be impossible to call it as a normal function", () => {
+    expect(() => window.Menu()).toThrow();
+  });
+
+  it("create a menu instance and assign it to the var headerMenu", () => {
     var headerMenu = new Menu();
 
     expect(headerMenu).toEqual(jasmine.any(Menu));
+    expect(headerMenu instanceof Menu).toBeTruthy();
   });
 
 });
@@ -105,5 +111,4 @@ describe("menuRendering", () => {
 
     expect(headerMenu.onItemClick).toHaveBeenCalled();
   });
-
 });

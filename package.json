@@ -4,8 +4,9 @@
   "description": "Code with unit tests, linters, coverage, ecc.",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/.bin/karma start ./configs/karma.configs.js",
-    "dev": "./node_modules/.bin/karma start ./configs/karma.configs.js testDrivenDevelopment"
+    "es6Report" : "plato -r -d dist/reports/analysis ./src",
+    "dev": "npm run test testDrivenDevelopment",
+    "test": "./node_modules/.bin/karma start ./configs/karma.configs.js && npm run es6Report"
   },
   "repository": {
     "type": "git",
@@ -39,13 +40,15 @@
     "karma": "^0.13.0-rc.9",
     "karma-babel-preprocessor": "^6.0.1",
     "karma-chrome-launcher": "^0.2.2",
-    "karma-coverage": "^0.5.3",
+    "karma-coverage": "douglasduteil/karma-coverage#next",
     "karma-jasmine": "^0.3.6",
     "karma-phantomjs-launcher": "^0.2.1",
+    "karma-sourcemap-loader": "^0.3.6",
     "lodash": "^3.10.1",
     "merge2": "^0.3.6",
     "mocha": "^2.3.4",
     "moment": "^2.10.6",
+    "istanbul": "gotwarlost/istanbul.git#source-map",
     "phantomjs": "^1.9.19"
   }
 }
