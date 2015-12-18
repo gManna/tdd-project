@@ -42,6 +42,7 @@ module.exports = function(config) {
     'karma-phantomjs-launcher',
     'karma-babel-preprocessor',
     'karma-coverage',
+    'karma-eslint',
     'karma-jasmine'
   ];
 
@@ -51,8 +52,13 @@ module.exports = function(config) {
   ];
 
   data.preprocessors = {
-    [SOURCE_SPECS]: ['babel'],
-    [SOURCES]: ['babel', 'coverage']
+    [SOURCE_SPECS]: ['babel', 'eslint'],
+    [SOURCES]: ['babel', 'coverage', 'eslint']
+  };
+
+  data.eslint = {
+    stopOnError: true,
+    stopOnWarning: false
   };
 
   data.babelPreprocessor = {
@@ -60,10 +66,10 @@ module.exports = function(config) {
       presets: ['es2015'],
       sourceMap: 'inline'
     },
-    filename: function (file) {
+    filename: function(file) {
       return file.originalPath.replace(/\.js$/, '.es5.js');
     },
-    sourceFileName: function (file) {
+    sourceFileName: function(file) {
       return file.originalPath;
     }
   };
@@ -89,7 +95,7 @@ module.exports = function(config) {
     ],
     instrumenterOptions: {
       isparta: {
-        babel : {
+        babel: {
           presets: 'es2015'
         }
       }
