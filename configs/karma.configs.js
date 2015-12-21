@@ -4,9 +4,6 @@ var _ = require('lodash');
 var path = require('path');
 
 const PORT = 9876;
-const SOURCES_ALL = "src/**/*.js";
-const SOURCES = "src/**/!(*.spec).js";
-const SOURCE_SPECS = "src/**/*.spec.js";
 const AUTO_WATCH = (function(cliOptions) {
   var res;
 
@@ -19,6 +16,40 @@ const AUTO_WATCH = (function(cliOptions) {
   (res && console.log('STARTING TEST DRIVEN DEVELOPMENT', '\n', 'SERVER LISTENING AT', '\n', `localhost:${PORT}`, '\n'));
   return res;
 })(process.argv);
+
+const COMPONENT = (function(cliOptions) {
+  var res = '';
+  var needle = /^components=(.+)/;
+
+  // TODO: Adjust when multiple components are passed, actually data.files seems doesn't accept whitelists
+  for(var i = 0; i < cliOptions.length; i++) {
+    var param = cliOptions[i];
+    if(needle.test(param)) {
+      res = param.split('=').pop().split(',');
+      break;
+    }
+  }
+
+  if(res.length > 1) {
+    res = `{${res.join(',')}}`;
+  } else {
+    res = res.join(',');
+  }
+
+  if(res) {
+    res = `${res}/**/`;
+  }
+
+  if(!AUTO_WATCH) {
+    res = '';
+  }
+
+  return res;
+})(process.argv);
+
+const SOURCES_ALL = `src/**/${COMPONENT}*.js`;
+const SOURCES = `src/**/${COMPONENT}!(*.spec).js`;
+const SOURCE_SPECS = `src/**/${COMPONENT}*.spec.js`;
 
 module.exports = function(config) {
 
@@ -48,7 +79,7 @@ module.exports = function(config) {
 
   data.files = [
     "node_modules/jquery/dist/jquery.js",
-    "src/**/*.js"
+    SOURCES_ALL
   ];
 
   data.preprocessors = {
