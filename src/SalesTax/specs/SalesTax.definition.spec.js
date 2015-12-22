@@ -11,8 +11,13 @@ describe("class SalesTax definition", () => {
   });
 
   it("create a SalesTax instance and assign it to the var salesTax", () => {
-    var salesTax = new SalesTax();
+    var container = $('<div />', {
+      id: 'stax'
+    }).appendTo('body');
 
+    var salesTax = new SalesTax(container);
+
+    expect(salesTax.container).toEqual(jasmine.any(jQuery));
     expect(salesTax).toEqual(jasmine.any(SalesTax));
     expect(salesTax instanceof SalesTax).toBeTruthy();
   });

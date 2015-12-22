@@ -33,7 +33,7 @@ const COMPONENT = (function(cliOptions) {
   if(res.length > 1) {
     res = `{${res.join(',')}}`;
   } else {
-    res = res.join(',');
+    res = res && res.join(',');
   }
 
   if(res) {
@@ -79,6 +79,8 @@ module.exports = function(config) {
 
   data.files = [
     "node_modules/jquery/dist/jquery.js",
+    "node_modules/jasmine-jquery/lib/jasmine-jquery.js",
+    {pattern: 'src/**/fixtures/**/*.html', watched: true, served: true, included: false},
     SOURCES_ALL
   ];
 

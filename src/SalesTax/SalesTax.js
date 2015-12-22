@@ -1,14 +1,17 @@
 class SalesTax {
   /**
+   * @param {string|jQuery} [container = $()]
    * @Constructor
    */
-  constructor() {
+  constructor(container) {
+
     /**
      *
      * @type {string}
      * @private
      */
     this._storageKey = "SalesTaxesAlreadyCalculated";
+    this.container =  $(container);
   }
 
   /**
@@ -20,6 +23,13 @@ class SalesTax {
     return this._storageKey;
   }
 
+  /**
+   *
+   * @returns {boolean}
+   */
+  areFree() {
+    return this.container.hasClass("wrap-free");
+  }
   /**
    * checks if salesTax are already calculated
    * @returns {boolean}

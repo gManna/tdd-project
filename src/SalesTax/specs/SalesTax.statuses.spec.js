@@ -7,8 +7,19 @@ describe("cookie status", () => {
   ;
 
   beforeEach(done => {
-    salesTax = new SalesTax();
+    var container = $('<div />', {
+      id: 'stax'
+    }).appendTo('body');
+
+    salesTax = new SalesTax(container);
+
     window.yTos = window.__mocks__.yTos;
+    done();
+  });
+
+  afterEach(done => {
+    salesTax = void 0;
+    window.yTos = void 0;
     done();
   });
 
@@ -18,6 +29,31 @@ describe("cookie status", () => {
 
   it("should has 'areCalculated' method", () => {
     expect(typeof salesTax.areCalculated).toBe("function");
+  });
+
+  it("should has 'areFree' method", () => {
+    expect(typeof salesTax.areFree).toBe("function");
+  });
+
+  it("'areFree' should call '<jQuery>.addClass' method", () => {
+
+    spyOn(salesTax.container, "hasClass");
+    salesTax.areFree();
+    expect(salesTax.container.hasClass).toHaveBeenCalled();
+    expect(salesTax.container.hasClass).toHaveBeenCalledWith("wrap-free");
+
+  });
+
+  it("'areFree' should return false", () => {
+
+    expect(salesTax.areFree()).toBeFalsy();
+
+  });
+
+  it("'areFree' should return true", () => {
+    salesTax.container.addClass("wrap-free");
+    expect(salesTax.areFree()).toBeTruthy();
+
   });
 
   it("'areCalculated' should call 'yTos.cookie.get' method", () => {

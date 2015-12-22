@@ -36,6 +36,7 @@
     "isparta": "^4.0.0",
     "istanbul": "gotwarlost/istanbul.git#source-map",
     "jasmine-core": "^2.4.1",
+    "jasmine-jquery": "^2.1.1",
     "jquery": "^2.1.4",
     "karma": "^0.13.0-rc.9",
     "karma-babel-preprocessor": "^6.0.1",
