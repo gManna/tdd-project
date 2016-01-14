@@ -11,13 +11,25 @@ delete webpackConfigs.output;
 delete webpackConfigs.context;
 delete webpackConfigs.target;
 
+let browsers = ((useAllBrowsers) => {
+  let list = ['Chrome'];
+  let all = ['PhantomJS', 'Firefox'];
+  let windowsBrowsers = ['IE'];
+
+  if(useAllBrowsers) {
+    list = list.concat(all);
+    //TODO: TO BE TESTED
+    if(/^win/.test(process.platform)) {
+      list = list.concat(windowsBrowsers);
+    }
+  }
+
+  return list;
+})(!!process.argv.filter(res => res === '--single-run').length);
+
 
 const PORT = 9876;
-const SRC_JS = defaults.SRC_JS;
-const PUBLIC_JS = defaults.DEST_JS;
-
 const SOURCES_SPECS = defaults.SPECS_SRC_GLOB;
-const SOURCES = `${SRC_JS}/**/!(*.spec).js`;
 
 function karmaConfig(karma) {
   var
@@ -30,9 +42,9 @@ function karmaConfig(karma) {
 
       basePath: '..'
     }
-  ;
+    ;
 
-  configs.browsers = ['Chrome', 'PhantomJS'];
+  configs.browsers = browsers;
   configs.frameworks = ['jasmine'];
 
   configs.files = [
@@ -53,13 +65,29 @@ function karmaConfig(karma) {
   };
 
   configs.plugins = [
+    "karma-chrome-launcher",
+    "karma-phantomjs-launcher",
+    "karma-firefox-launcher",
+    "karma-ie-launcher",
+
     "karma-jasmine",
     "karma-webpack",
     "karma-coverage",
-    'karma-phantomjs-launcher',
-    "karma-chrome-launcher",
     "karma-sourcemap-loader"
   ];
+
+  configs.customLaunchers = {
+    IE9: {
+      base: 'IE',
+      'x-ua-compatible': 'IE=EmulateIE9',
+      flags: ['-extoff']
+    },
+    IE8: {
+      base: 'IE',
+      'x-ua-compatible': 'IE=EmulateIE8',
+      flags: ['-extoff']
+    }
+  };
 
   webpackConfigs.devtool = "inline-source-map";
   webpackConfigs.module.preLoaders.unshift({
