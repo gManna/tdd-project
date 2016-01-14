@@ -11,15 +11,19 @@ delete webpackConfigs.output;
 delete webpackConfigs.context;
 delete webpackConfigs.target;
 
-let browsers = ((useAllBrowsers) => {
-  let list = ['Chrome'];
-  let all = ['PhantomJS', 'Firefox'];
-  let windowsBrowsers = ['IE'];
+const IS_WINDOWS = /^win/.test(process.platform);
+const PORT = 9876;
+const SOURCES_SPECS = defaults.SPECS_SRC_GLOB;
+
+const BROWSERS = ((useAllBrowsers) => {
+  let list = ['PhantomJS'];
+  let all = ['Chrome', 'Firefox'];
+  let windowsBrowsers = ['IE', 'IE9', 'IE8'];
 
   if(useAllBrowsers) {
     list = list.concat(all);
-    //TODO: TO BE TESTED
-    if(/^win/.test(process.platform)) {
+
+    if(IS_WINDOWS) {
       list = list.concat(windowsBrowsers);
     }
   }
@@ -27,9 +31,6 @@ let browsers = ((useAllBrowsers) => {
   return list;
 })(!!process.argv.filter(res => res === '--single-run').length);
 
-
-const PORT = 9876;
-const SOURCES_SPECS = defaults.SPECS_SRC_GLOB;
 
 function karmaConfig(karma) {
   var
@@ -44,7 +45,7 @@ function karmaConfig(karma) {
     }
     ;
 
-  configs.browsers = browsers;
+  configs.browsers = BROWSERS;
   configs.frameworks = ['jasmine'];
 
   configs.files = [
@@ -77,6 +78,11 @@ function karmaConfig(karma) {
   ];
 
   configs.customLaunchers = {
+    IE10: {
+      base: 'IE',
+      'x-ua-compatible': 'IE=EmulateIE10',
+      flags: ['-extoff']
+    },
     IE9: {
       base: 'IE',
       'x-ua-compatible': 'IE=EmulateIE9',
@@ -97,10 +103,7 @@ function karmaConfig(karma) {
   });
   webpackConfigs.isparta = {
     embedSource: true,
-    noAutoWrap: true,
-    babel: {
-      presets: ['es2015']
-    }
+    noAutoWrap: true
   };
 
   configs.webpack = webpackConfigs;
