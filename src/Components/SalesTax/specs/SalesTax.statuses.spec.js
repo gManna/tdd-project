@@ -1,6 +1,6 @@
 "use strict";
 
-describe("cookie status", () => {
+xdescribe("cookie status", () => {
   var
     salesTax,
     cookieKey = "SalesTaxesAlreadyCalculated"

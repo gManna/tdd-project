@@ -1,4 +1,4 @@
-describe("salesTaxController", () => {
+xdescribe("salesTaxController", () => {
   var yTosReadyEventName = "ytosReady";
 
   beforeEach(done => {

@@ -1,6 +1,6 @@
 'use strict';
 
-describe("class SalesTax definition", () => {
+xdescribe("class SalesTax definition", () => {
 
   it("should be defined in the 'window' scope", () => {
     expect(window.SalesTax).toBeDefined();
