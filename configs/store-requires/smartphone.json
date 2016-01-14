@@ -1,0 +1,158 @@
+[
+  {
+    "Controller": "Errors",
+    "Scripts": [
+      "/Scopes/Pages/errors.js"
+    ]
+  },
+  {
+    "Controller" : "Common",
+    "Scripts": [
+      "/Scopes/site.js"
+    ]
+  },
+  {
+    "Controller" : "Shared",
+    "Scripts": [
+      "/Scopes/shared.js"
+    ]
+  },
+  {
+    "Controller" : "Countries",
+    "Scripts": [
+
+      "/Scopes/Pages/Countries/countries.js"
+    ]
+  },
+  {
+    "Controller" : "Home",
+    "Scripts": [
+
+      "/Scopes/Pages/Home/home.js"
+    ]
+  },
+  {
+    "Controller" : "Subhome",
+    "Scripts": [
+      "/Scopes/Pages/Subhome/subhome.js"
+    ]
+  },
+  {
+    "Controller" : "User",
+    "Scripts": [
+      "/Scopes/Pages/Account/login.js"
+    ]
+  },
+  {
+    "Controller" : "Overview",
+    "Scripts": [
+      "/Scopes/Pages/Account/overview.js"
+    ]
+  },
+  {
+    "Controller" : "AddressBook",
+    "Scripts": [
+      "/Scopes/Pages/Account/addressbook.js"
+    ]
+  },
+  {
+    "Controller" : "Orders",
+    "Scripts": [
+      "/Scopes/Pages/Account/orders.js"
+    ]
+  },
+  {
+    "Controller" : "WishList",
+    "Scripts": [
+      "/Scopes/Pages/Account/wishlist.js"
+    ]
+  },
+  {
+    "Controller": "CreditCardWallet",
+    "Scripts": [
+      "/Scopes/Pages/Account/ccwallet.js"
+    ]
+  },
+  {
+    "Controller" : "SearchOrder",
+    "Scripts": [
+      "/Scopes/Pages/Account/searchorder.js"
+    ]
+  },
+  {
+    "Controller" : "Search",
+    "Scripts": [
+      "/Scopes/Pages/Search/search.js"
+    ]
+  },
+  {
+    "Controller" : "Item",
+    "Scripts": [
+      "/Scopes/Pages/Item/item.js"
+    ]
+  },
+  {
+    "Controller" : "Look",
+    "Scripts": [
+    ]
+  },
+  {
+    "Controller" : "Fashionshow",
+    "Scripts": [
+    ]
+  },
+  {
+    "Controller" : "Cart",
+    "Scripts": [
+      "/Scopes/Pages/Checkout/cart.js"
+    ]
+  },
+  {
+    "Controller" : "Checkmail",
+    "Scripts": [
+      "/Scopes/Pages/Checkout/checkmail.js"
+    ]
+  },
+  {
+    "Controller" : "Delivery",
+    "Scripts": [
+      "/Scopes/Pages/Checkout/delivery.js"
+    ]
+  },
+  {
+    "Controller" : "Payment",
+    "Scripts": [
+      "/Scopes/Pages/Checkout/payment.js"
+    ]
+  },
+  {
+    "Controller" : "Confirmation",
+    "Scripts": [
+      "/Scopes/Pages/Checkout/confirmation.js"
+    ]
+  },
+  {
+    "Controller" : "ThankYou",
+    "Scripts": [
+      "/Scopes/Pages/Checkout/thankyou.js"
+    ]
+  },
+  {
+    "Controller" : "Refund",
+    "Scripts": [
+      "/Scopes/Pages/Return/refund.js"
+    ]
+  },
+  {
+    "Controller" : "LegalArea",
+    "Scripts": [
+      "/Scopes/Pages/Legal/legal.js"
+    ]
+  },
+  {
+    "Controller" : "PasswordRecovery",
+    "Scripts": [
+      "/Scopes/Pages/Account/passwordRecovery.js"
+    ]
+  }
+]

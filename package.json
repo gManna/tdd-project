@@ -1,54 +1,61 @@
 {
   "name": "tdd-project",
-  "version": "0.0.1",
-  "description": "Code with unit tests, linters, coverage, ecc.",
-  "main": "index.js",
+  "version": "1.0.0",
+  "description": "F31 Store built with Unit Tests, ES6",
+  "private": true,
+  "main": "./configs/default.config.js",
   "scripts": {
-    "esPlato": "plato -r -d dist/reports/analysis ./src",
-    "karma": "./node_modules/.bin/karma start ./configs/karma.configs.js",
-    "dev": "npm run karma testDrivenDevelopment",
-    "test": "npm run karma && npm run esPlato"
+    "metrics": "node ./configs/plato.config.js",
+    "test": "node ./node_modules/karma-cli/bin/karma start ./configs/karma.config.js --single-run",
+    "devTest": "node ./node_modules/karma-cli/bin/karma start ./configs/karma.config.js --auto-watch",
+    "js": "node ./node_modules/webpack/bin/webpack.js --config ./configs/webpack.config.js",
+    "devJs": "node ./node_modules/webpack/bin/webpack.js --config ./configs/webpack.config.js --watch"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/hitmands/tdd-project.git"
   },
   "keywords": [
-    "TDD"
+    "es6",
+    "tdd",
+    "unit test"
   ],
   "author": "yNap-Predators",
-  "license": "ISC",
   "bugs": {
     "url": "https://github.com/hitmands/tdd-project/issues"
   },
   "homepage": "https://github.com/hitmands/tdd-project#readme",
-  "dependencies": {
-    "babel": "^6.3.13",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "babel-core": "^6.4.0",
+    "babel-istanbul-loader": "0.0.1",
+    "babel-loader": "^6.2.1",
     "babel-preset-es2015": "^6.3.13",
-    "bluebird": "^3.0.6",
     "eslint": "^1.10.3",
+    "eslint-loader": "^1.2.0",
     "globby": "^4.0.0",
-    "gulp": "^3.9.0",
-    "gulp-babel": "^6.1.1",
-    "gulp-cached": "^1.1.0",
-    "gulp-plumber": "^1.0.1",
-    "gulp-sourcemaps": "^1.6.0",
     "isparta": "^4.0.0",
-    "istanbul": "gotwarlost/istanbul.git#source-map",
+    "isparta-loader": "^1.0.0",
     "jasmine-core": "^2.4.1",
     "jasmine-jquery": "^2.1.1",
-    "jquery": "^2.1.4",
-    "karma": "^0.13.0-rc.9",
-    "karma-babel-preprocessor": "^6.0.1",
+    "karma": "^0.13.19",
     "karma-chrome-launcher": "^0.2.2",
-    "karma-coverage": "douglasduteil/karma-coverage#next",
-    "karma-eslint": "^2.0.1",
+    "karma-cli": "^0.1.2",
+    "karma-coverage": "^0.5.3",
     "karma-jasmine": "^0.3.6",
-    "karma-phantomjs-launcher": "^0.2.1",
+    "karma-phantomjs-launcher": "^0.2.3",
     "karma-sourcemap-loader": "^0.3.6",
+    "karma-webpack": "^1.7.0",
     "lodash": "^3.10.1",
-    "merge2": "^0.3.6",
-    "moment": "^2.10.6",
-    "phantomjs": "^1.9.19"
+    "phantomjs": "^1.9.19",
+    "plato": "git+https://github.com/deedubs/es6-plato.git",
+    "webpack": "^1.12.11"
+  },
+  "dependencies": {
+    "jquery": "^2.2.0",
+    "injector": "git+http://github.com/team-predators/injector.git#master"
+  },
+  "browser": {
+    "npm/predators/injector": "./node_modules/injector/release/predators-es6-injector.js"
   }
 }
