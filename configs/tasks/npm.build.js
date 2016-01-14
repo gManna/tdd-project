@@ -20,9 +20,10 @@ exec(scripts.js)
   .then(res => {
     return exec(scripts.test);
   })
-  .then(res => {
-    return exec(scripts.metrics);
-  })
+  .then(
+    res => exec(scripts.metrics),
+    err => exec(scripts.metrics)
+)
   .then(
   () => console.log('Script Executed'),
   () => console.log('Script Executed')
