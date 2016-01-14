@@ -9,7 +9,8 @@
     "test": "node ./node_modules/karma-cli/bin/karma start ./configs/karma.config.js --single-run",
     "devTest": "node ./node_modules/karma-cli/bin/karma start ./configs/karma.config.js --auto-watch",
     "js": "node ./node_modules/webpack/bin/webpack.js --config ./configs/webpack.config.js",
-    "devJs": "node ./node_modules/webpack/bin/webpack.js --config ./configs/webpack.config.js --watch"
+    "devJs": "node ./node_modules/webpack/bin/webpack.js --config ./configs/webpack.config.js --watch",
+    "build": "node ./configs/tasks/npm.build.js"
   },
   "repository": {
     "type": "git",
