@@ -59,7 +59,7 @@
   "dependencies": {
     "es5-shim": "^4.4.1",
     "injector": "git+http://github.com/team-predators/injector.git#master",
-    "jquery": "^2.2.0"
+    "jquery": "^1.12.0"
   },
   "browser": {
     "npm/predators/injector": "./node_modules/injector/release/predators-es6-injector.js"

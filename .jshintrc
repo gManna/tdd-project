@@ -1,3 +1,21 @@
 {
-  "esnext": true
+  "esnext": true,
+  "bitwise": false,
+  "camelcase": true,
+  "curly": true,
+  "eqeqeq": true,
+  "forin": true,
+  "freeze": true,
+  "immed": true,
+  "latedef": true,
+  "newcap": true,
+  "nocomma": true,
+  "nonbsp": true,
+  "strict": "global",
+  "globalstrict": true,
+  "undef": true,
+  "browser": true,
+  "devel": true,
+  "jquery": true,
+  "jasmine": true
 }
