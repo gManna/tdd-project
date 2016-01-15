@@ -27,7 +27,7 @@
     "no-lone-blocks": [1],
     "no-loop-func": [2],
     "no-lonely-if": [1],
-    "linebreak-style": [2, "unix"],
+    "linebreak-style": [2, "windows"],
     "no-multi-spaces": [1],
     "no-multi-str": [2],
     "no-multiple-empty-lines": [1, {"max": 2}],
