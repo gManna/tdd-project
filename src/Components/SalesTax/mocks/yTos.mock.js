@@ -1,3 +1,5 @@
+"use strict";
+
 if(!window.__mocks__) {
   window.__mocks__ = {};
 }

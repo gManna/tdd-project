@@ -1,6 +1,10 @@
 "use strict";
 
-xdescribe("cookie status", () => {
+import SalesTax from '../SalesTax';
+import '../SalesTaxCtrl';
+import '../mocks/yTos.mock';
+
+describe("cookie status", () => {
   var
     salesTax,
     cookieKey = "SalesTaxesAlreadyCalculated"

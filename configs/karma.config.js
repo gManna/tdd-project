@@ -2,6 +2,7 @@
 
 var
   _ = require('lodash'),
+  path = require('path'),
   defaults = require('./defaults.config.js'),
   webpackConfigs = _.merge({}, require('./webpack.config.js'))
   ;
@@ -51,6 +52,7 @@ function karmaConfig(karma) {
   configs.files = [
     "node_modules/jquery/dist/jquery.js",
     "node_modules/jasmine-jquery/lib/jasmine-jquery.js",
+    "node_modules/injector/release/predators-es6-injector.js",
     SOURCES_SPECS
   ];
 

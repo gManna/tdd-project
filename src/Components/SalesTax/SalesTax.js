@@ -1,3 +1,5 @@
+"use strict";
+
 class SalesTax {
   /**
    * @param {string|jQuery} [container = $()]
@@ -47,3 +49,5 @@ class SalesTax {
   }
 
 }
+
+export default SalesTax;

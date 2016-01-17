@@ -52,9 +52,9 @@ var configs = {
       filename: "[name]"
     },
     externals: {
-      "jQuery" : "window.jQuery",
-      "$M": "window.$M",
-      "$Y": "window.$Y"
+      "window/jQuery" : "window.jQuery",
+      "window/$M": "window.$M",
+      "window/$Y": "window.$Y"
     }
   }
 ;

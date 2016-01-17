@@ -1,8 +1,10 @@
-((window, $) => {
-  'use strict';
-  $M.setModule('SalesTaxCtrl', SalesTaxCtrl);
+"use strict";
 
-  var SalesTax = window.SalesTax;
+import $ from 'window/jQuery';
+import $M from 'window/$M';
+
+((window) => {
+  $M.set('SalesTaxCtrl', SalesTaxCtrl);
 
   function SalesTaxCtrl($) {
     var self = this;
@@ -12,4 +14,4 @@
   }
 
 
-})(window, window.jQuery);
+})(window);

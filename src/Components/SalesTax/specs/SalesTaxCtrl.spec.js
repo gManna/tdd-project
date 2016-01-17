@@ -1,5 +1,12 @@
-xdescribe("salesTaxController", () => {
-  var yTosReadyEventName = "ytosReady";
+"use strict";
+
+import $M from 'window/$M';
+import $ from 'window/jQuery';
+import '../mocks/yTos.mock.js';
+
+
+describe("salesTaxController", () => {
+  var yTosReadyEventName = "yTosReady";
 
   beforeEach(done => {
     window.yTos = window.__mocks__.yTos;
@@ -11,13 +18,30 @@ xdescribe("salesTaxController", () => {
     done();
   });
 
-  it("should be called on the 'ytosReady' event", () => {
-    jQuery(document).trigger(yTosReadyEventName);
+  it("should have a SalesTaxCtrl module registered", () => {
+    var isSalesTaxCtrlRegistered = $M.hasSync('SalesTaxCtrl');
+
+    expect(isSalesTaxCtrlRegistered).toBeTruthy();
   });
 
-  it("is confirmation page", () => {
-    window.yTos.navigation.Controller = 'Confirmation';
+  it("should be ran on the 'ytosReady' event", (done) => {
 
-    jQuery(document).trigger(yTosReadyEventName);
-  })
+
+
+    $M
+      .yTosReady('SalesTaxCtrl')
+      .then(function(module) {
+        expect(this.state()).toBe('resolved');
+        return $M.inspect(module);
+      })
+      .then(function(scope) {
+        expect(scope.something).toEqual('Hello World');
+      })
+      .always(function() {
+        done()
+      })
+    ;
+
+    $(document).trigger(yTosReadyEventName);
+  });
 });

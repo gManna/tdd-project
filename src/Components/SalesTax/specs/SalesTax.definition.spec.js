@@ -1,13 +1,16 @@
 'use strict';
 
-xdescribe("class SalesTax definition", () => {
+import SalesTax from '../SalesTax';
+
+describe("class SalesTax definition", () => {
+
 
   it("should be defined in the 'window' scope", () => {
-    expect(window.SalesTax).toBeDefined();
     expect(SalesTax).toBeDefined();
   });
+
   it("should be impossible to call it as a normal function", () => {
-    expect(() => window.SalesTax()).toThrow();
+    expect(() => SalesTax()).toThrow();
   });
 
   it("create a SalesTax instance and assign it to the var salesTax", () => {
