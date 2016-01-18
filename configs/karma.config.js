@@ -47,6 +47,7 @@ function karmaConfig(karma) {
     ;
 
   configs.browsers = BROWSERS;
+  configs.browsers = ['IE8'];
   configs.frameworks = ['jasmine'];
 
   configs.files = [
@@ -55,6 +56,13 @@ function karmaConfig(karma) {
     "node_modules/injector/release/predators-es6-injector.js",
     SOURCES_SPECS
   ];
+
+  if(configs.browsers.indexOf('IE8') > -1) {
+    configs.files.unshift(
+      "node_modules/es5-shim/es5-shim.js",
+      "node_modules/es5-shim/es5-sham.js"
+    );
+  }
 
   preprocessors[SOURCES_SPECS] = ['webpack', 'sourcemap'];
 

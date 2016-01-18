@@ -14,7 +14,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hitmands/tdd-project.git"
+    "url": "git+https://github.com/team-predators/tdd-project.git"
   },
   "keywords": [
     "es6",
@@ -23,9 +23,9 @@
   ],
   "author": "yNap-Predators",
   "bugs": {
-    "url": "https://github.com/hitmands/tdd-project/issues"
+    "url": "https://github.com/team-predators/tdd-project/issues"
   },
-  "homepage": "https://github.com/hitmands/tdd-project#readme",
+  "homepage": "https://github.com/team-predators/tdd-project#readme",
   "license": "UNLICENSED",
   "devDependencies": {
     "babel-core": "^6.4.0",
@@ -57,7 +57,6 @@
     "webpack": "^1.12.11"
   },
   "dependencies": {
-    "es5-shim": "^4.4.1",
     "injector": "git+http://github.com/team-predators/injector.git#master",
     "jquery": "^1.12.0"
   },

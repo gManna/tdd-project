@@ -5,7 +5,7 @@ import SalesTax from '../SalesTax';
 describe("class SalesTax definition", () => {
 
 
-  it("should be defined in the 'window' scope", () => {
+  fit("should be defined in the 'window' scope", () => {
     expect(SalesTax).toBeDefined();
   });
 
